@@ -1,0 +1,8 @@
+.alert_main_view {
+  border-top-right-radius: 0.8rem;
+  border-top-left-radius: 0.8rem;
+}
+
+.alert_text {
+  color: var(--text-color);
+}
