@@ -1,0 +1,10 @@
+.button_main_view {
+  background-color: var(--primary-color);
+  border-radius: 0.8rem;
+  padding: 0.6rem;
+}
+
+.button_text {
+  color: var(--on-primary-text-color);
+  font-weight: bold;
+}
