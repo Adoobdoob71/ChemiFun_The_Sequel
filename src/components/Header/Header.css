@@ -1,0 +1,14 @@
+.header_main_view {
+  background-color: var(--surface-color);
+  padding-inline: 2rem;
+  padding-block: 1rem;
+  user-select: none;
+  width: 100%;
+}
+
+@media screen and (min-width: 55rem) {
+  .header_main_view {
+    width: 55rem;
+    align-self: center;
+  }
+}
