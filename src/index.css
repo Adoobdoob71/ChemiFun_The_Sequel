@@ -1,8 +1,11 @@
+* {
+  box-sizing: border-box;
+}
+
 :root {
   font-size: 10px !important;
-  box-sizing: border-box;
-  --primary-color: #00ffcd;
-  --accent-color: #dc758f;
+  --primary-color: #48bf84;
+  --accent-color: #7fefbd;
   --background-color: #e0e0e0;
   --text-color: #000000;
   --surface-color: #ffffff;
@@ -14,9 +17,7 @@
   --error-color: #fa5555;
   --warning-color: #fffc91;
   --link-color: #2a6fb5;
-  --border-color: #959595;
-  --primary-color-darkened-1: #00ddbc;
-  --primary-color-darkened-2: #00ccab;
+  --on-surface-background-color: #f1f1f1;
 }
 
 body {
@@ -43,6 +44,10 @@ body {
 
 .font_extra_small {
   font-size: 1.2rem;
+}
+
+.font_tiny {
+  font-size: 1.1rem;
 }
 
 .flex {
@@ -89,7 +94,7 @@ body {
 .custom_input {
   outline: none;
   border: none;
-  border-bottom: 0.1rem solid var(--primary-color);
+  border-bottom: 0.15rem solid var(--primary-color);
   padding-inline: 1.4rem;
   padding-block: 1rem;
   border-top-right-radius: 0.6rem;

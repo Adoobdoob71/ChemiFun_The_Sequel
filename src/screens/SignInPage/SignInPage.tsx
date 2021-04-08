@@ -1,18 +1,20 @@
 import React from "react";
-import { Alert, Column, Header } from "../../components";
+import { Alert, Column, Header, IconButton } from "../../components";
 import { FaChevronRight } from "react-icons/fa";
 import "./SignInPage.css";
+import { useHistory } from "react-router";
 
 const SignInPage: React.FC = ({}) => {
   const [nickname, setNickname] = React.useState<string>("");
-  const [alertVisible, setAlertVisible] = React.useState<boolean>(false);
   const [alertMessage, setAlertMessage] = React.useState<string>("");
+  const history = useHistory();
 
   const advanceToNextPage = () => {
     if (nickname.length === 0) {
-      setAlertMessage("לא הזנתם כינוי");
+      setAlertMessage("לא הוזן כינוי");
       return;
     }
+    history.push("/home");
   };
 
   const handleNickname = (event: React.ChangeEvent<HTMLInputElement>) =>
@@ -25,7 +27,12 @@ const SignInPage: React.FC = ({}) => {
           height: window.innerHeight,
         }}>
         <Header
-          right={<FaChevronRight color="var(--text-color)" size="1.4rem" />}
+          right={
+            <IconButton
+              icon={<FaChevronRight color="var(--text-color)" size="1.4rem" />}
+              onClick={advanceToNextPage}
+            />
+          }
           title="ברוכים הבאים לכימיכיף"
           subtitle="לחצו על הכפתור מימין על מנת להמשיך"
         />
@@ -34,7 +41,7 @@ const SignInPage: React.FC = ({}) => {
           <input
             value={nickname}
             onChange={handleNickname}
-            placeholder="Nickname"
+            placeholder="כינוי"
             className="custom_input font_medium"
           />
         </div>
