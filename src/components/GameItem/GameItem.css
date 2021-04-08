@@ -1,0 +1,56 @@
+.game_item_main_view {
+  border-radius: 0.8rem;
+  padding-inline: 1.2rem;
+  padding-block: 1rem;
+  width: 100%;
+  background-color: var(--surface-color);
+  border: 0.2rem solid var(--placeholder-color);
+  cursor: pointer;
+}
+
+.game_item_main_view:hover {
+  border-color: var(--accent-color);
+}
+
+.game_item_title {
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+.game_item_participants_number {
+  color: var(--text-color);
+}
+
+.game_item_participants_text {
+  color: var(--text-color);
+  overflow: hidden;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
+}
+
+.game_item_status {
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+.game_item_status_circle_false {
+  background-color: var(--warning-color);
+  width: 1rem;
+  height: 1rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid var(--text-color);
+}
+
+.game_item_status_circle_true {
+  background-color: var(--success-color);
+  width: 1rem;
+  height: 1rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid var(--text-color);
+}
+
+@media screen and (min-width: 55rem) {
+  .game_item_main_view {
+    width: 55rem;
+  }
+}
