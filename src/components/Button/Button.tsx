@@ -3,7 +3,7 @@ import React from "react";
 interface ButtonProps {
   style?: React.CSSProperties;
   onClick: () => void;
-  size?: "large" | "medium" | "small" | "extra_small";
+  size?: "large" | "medium" | "small" | "extra_small" | "tiny";
   text: string;
 }
 

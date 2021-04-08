@@ -8,3 +8,7 @@
   color: var(--on-primary-text-color);
   font-weight: bold;
 }
+
+.button_main_view:active {
+  opacity: 0.4;
+}

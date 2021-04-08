@@ -6,7 +6,7 @@ interface RowProps {
 
 const Row: React.FC<RowProps> = (props) => {
   return (
-    <div className="flex flex_direction_row" style={props.style}>
+    <div className="flex flex_direction_row align_center" style={props.style}>
       {props.children}
     </div>
   );

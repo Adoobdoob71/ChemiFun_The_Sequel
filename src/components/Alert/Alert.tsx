@@ -1,5 +1,6 @@
 import React from "react";
 import { Row } from "..";
+import "./Alert.css";
 
 interface AlertProps {
   text: string;
@@ -7,7 +8,7 @@ interface AlertProps {
 
 const Alert: React.FC<AlertProps> = (props) => {
   const [scroll, setScroll] = React.useState<number>(0);
-  const [visible, setVisible] = React.useState<boolean>(true);
+  const [visible, setVisible] = React.useState<boolean>(false);
 
   const SPEED = 0.2; // The less, the slower
   const SMOOTHNESS = 10; // The less, the smoother
@@ -28,20 +29,26 @@ const Alert: React.FC<AlertProps> = (props) => {
   }, [scroll]);
 
   React.useEffect(() => {
-    setScroll(0);
-    setVisible(true);
+    if (props.text.length !== 0) {
+      setScroll(0);
+      setVisible(true);
+    }
   }, [props.text]);
 
   return visible ? (
-    <div className="alert_main_view flex flex_direction_column">
-      <Row style={{ paddingInline: "1.4rem", paddingBlock: "1rem" }}>
-        <span className="alert_text">{props.text}</span>
+    <div className="alert_main_view flex flex_direction_column box_shadow">
+      <Row
+        style={{
+          paddingInline: "1.6rem",
+          paddingBlock: "1.2rem",
+        }}>
+        <span className="alert_text font_extra_small">{props.text}</span>
       </Row>
       <div
         style={{
           width: `${scroll}%`,
           backgroundColor: "var(--primary-color)",
-          height: "0.1rem",
+          height: "0.125rem",
         }}></div>
     </div>
   ) : null;

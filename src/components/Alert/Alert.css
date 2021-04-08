@@ -1,6 +1,12 @@
 .alert_main_view {
   border-top-right-radius: 0.8rem;
   border-top-left-radius: 0.8rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 2.5%;
+  width: fit-content;
+  background-color: var(--surface-color);
 }
 
 .alert_text {
