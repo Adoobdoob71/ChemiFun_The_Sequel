@@ -9,6 +9,7 @@ interface GameItemProps {
   participants?: string[];
   style?: React.CSSProperties;
   started?: boolean;
+  onClick: () => void;
 }
 
 const GameItem: React.FC<GameItemProps> = (props) => {
@@ -33,7 +34,7 @@ const GameItem: React.FC<GameItemProps> = (props) => {
         </span>
         <IconButton
           icon={<FaChevronRight color="#000" size="1.2rem" />}
-          onClick={() => {}}
+          onClick={props.onClick}
         />
       </Row>
       <Row>

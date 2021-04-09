@@ -5,6 +5,7 @@
   background-color: var(--surface-color);
   border: 0.2rem solid var(--placeholder-color);
   justify-content: space-between;
+  width: 100%;
 }
 
 .participant_leader {
@@ -18,4 +19,10 @@
 
 .participant_points {
   color: var(--text-color);
+}
+
+@media screen and (min-width: 55rem) {
+  .participant_main_view {
+    width: 55rem;
+  }
 }
