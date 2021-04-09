@@ -3,11 +3,14 @@ import { FaChevronLeft } from "react-icons/fa";
 import { Column, GameItem, Header, IconButton } from "../../components";
 import { Game } from "../../utils/classes";
 import "./HomePage.css";
+import { useHistory } from "react-router-dom";
 
 const HomePage: React.FC = (props) => {
   const [games, setGames] = React.useState<Game[]>([]);
+  const history = useHistory();
+  const goBack = () => history.goBack();
+  const navigateToGame = () => history.push("/game");
 
-  const goBack = () => window.history.back();
   return (
     <div className="home_page_main_view flex flex_direction_column align_center">
       <Header
@@ -31,54 +34,28 @@ const HomePage: React.FC = (props) => {
           title="כיתה יב'1"
           style={{ marginBlock: "1rem" }}
           started={true}
+          onClick={navigateToGame}
         />
         <GameItem
           key="key"
           title="כיתה יב'1"
           style={{ marginBlock: "1rem" }}
           started={false}
-        />
-        <GameItem
-          key="key"
-          title="כיתה יב'1"
-          style={{ marginBlock: "1rem" }}
-          started={false}
+          onClick={navigateToGame}
         />
         <GameItem
           key="key"
           title="כיתה יב'1"
           style={{ marginBlock: "1rem" }}
           started={true}
+          onClick={navigateToGame}
         />
         <GameItem
           key="key"
           title="כיתה יב'1"
           style={{ marginBlock: "1rem" }}
           started={false}
-        />
-        <GameItem
-          key="key"
-          title="כיתה יב'1"
-          style={{ marginBlock: "1rem" }}
-          started={false}
-        />
-        <GameItem
-          key="key"
-          title="כיתה יב'1"
-          style={{ marginBlock: "1rem" }}
-          started={true}
-        />
-        <GameItem
-          key="key"
-          title="כיתה יב'1"
-          style={{ marginBlock: "1rem" }}
-          started={false}
-        />
-        <GameItem
-          key="key"
-          title="כיתה יב'1"
-          style={{ marginBlock: "1rem" }}
-          started={false}
+          onClick={navigateToGame}
         />
       </Column>
     </div>
