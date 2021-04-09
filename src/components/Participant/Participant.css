@@ -1,0 +1,21 @@
+.participant_main_view {
+  border-radius: 0.8rem;
+  padding-inline: 1.2rem;
+  padding-block: 0.8rem;
+  background-color: var(--surface-color);
+  border: 0.2rem solid var(--placeholder-color);
+  justify-content: space-between;
+}
+
+.participant_leader {
+  border-color: var(--success-color);
+}
+
+.participant_nickname {
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+.participant_points {
+  color: var(--text-color);
+}
