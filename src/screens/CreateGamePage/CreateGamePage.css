@@ -8,6 +8,13 @@
   padding: 2rem;
 }
 
+.create_game_page_alert {
+  color: var(--error-color);
+  font-weight: bold;
+  margin-bottom: 1.6rem;
+  align-self: center;
+}
+
 @media screen and (min-width: 55rem) {
   .create_game_page_main_view {
     width: 55rem;
