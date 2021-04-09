@@ -5,6 +5,7 @@ import "./GameItem.css";
 
 interface GameItemProps {
   title: string;
+  host: string;
   key: string;
   participants?: string[];
   style?: React.CSSProperties;
@@ -28,6 +29,9 @@ const GameItem: React.FC<GameItemProps> = (props) => {
           </span>
         </Row>
       </Row>
+      <span className="game_item_host font_extra_small">
+        מנהל - {props.host}
+      </span>
       <Row style={{ justifyContent: "space-between" }}>
         <span className="game_item_participants_text font_extra_small">
           אלעד, אלון, בן, אביב, רועי, גיא, לירן, אשש

@@ -3,17 +3,20 @@ import { Alert, Column, Header, IconButton } from "../../components";
 import { FaChevronRight } from "react-icons/fa";
 import "./SignInPage.css";
 import { useHistory } from "react-router";
+import { NicknameContext } from "../../utils/NicknameContext";
 
 const SignInPage: React.FC = ({}) => {
   const [nickname, setNickname] = React.useState<string>("");
   const [alertMessage, setAlertMessage] = React.useState<string>("");
   const history = useHistory();
+  const { change_nickname } = React.useContext(NicknameContext);
 
   const advanceToNextPage = () => {
     if (nickname.length === 0) {
       setAlertMessage("לא הוזן כינוי");
       return;
     }
+    change_nickname(nickname);
     history.push("/home");
   };
 

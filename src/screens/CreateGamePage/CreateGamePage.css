@@ -1,0 +1,16 @@
+.create_game_page_main_view {
+  background-color: var(--surface-color);
+  border-radius: 0.8rem;
+  width: 100%;
+}
+
+.create_game_page_input_view {
+  padding: 2rem;
+}
+
+@media screen and (min-width: 55rem) {
+  .create_game_page_main_view {
+    width: 55rem;
+    align-self: center;
+  }
+}

@@ -16,7 +16,10 @@ const Header: React.FC<HeaderProps> = (props) => {
   return (
     <div
       className="flex flex_direction_row header_main_view align_center"
-      style={props.style}>
+      style={{
+        backgroundColor: props.transparent ? "transparent" : undefined,
+        ...props.style,
+      }}>
       {props.left}
       {props.center ? (
         props.center

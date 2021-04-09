@@ -17,6 +17,11 @@
   font-weight: bold;
 }
 
+.game_item_host {
+  color: var(--text-color);
+  font-weight: bold;
+}
+
 .game_item_participants_number {
   color: var(--text-color);
 }
