@@ -1,16 +1,17 @@
 import React from "react";
 import { FaChevronRight } from "react-icons/fa";
 import { IconButton, Row } from "..";
+import { Participant } from "../../utils/classes";
 import "./GameItem.css";
 
 interface GameItemProps {
-  title: string;
-  host: string;
-  key: string;
-  participants?: string[];
+  name?: string;
+  host?: string;
+  key?: string;
+  participants?: Participant[];
   style?: React.CSSProperties;
-  started?: boolean;
-  onClick: () => void;
+  gameStarted?: boolean;
+  onClick?: () => void;
 }
 
 const GameItem: React.FC<GameItemProps> = (props) => {
@@ -19,13 +20,15 @@ const GameItem: React.FC<GameItemProps> = (props) => {
       style={props.style}
       className="game_item_main_view flex flex_direction_column">
       <Row style={{ marginBottom: "0.3rem", justifyContent: "space-between" }}>
-        <span className="game_item_title font_medium">{props.title}</span>
+        <span className="game_item_title font_medium">{props.name}</span>
         <Row>
-          <span className="game_item_participants_number font_small">9/</span>
+          <span className="game_item_participants_number font_small">
+            משתתפים
+          </span>
           <span
             className="game_item_participants_number font_small"
-            style={{ fontWeight: "bold" }}>
-            10
+            style={{ fontWeight: "bold", marginInline: "0.4rem" }}>
+            {props.participants?.length}
           </span>
         </Row>
       </Row>
@@ -33,9 +36,15 @@ const GameItem: React.FC<GameItemProps> = (props) => {
         מנהל - {props.host}
       </span>
       <Row style={{ justifyContent: "space-between" }}>
-        <span className="game_item_participants_text font_extra_small">
-          אלעד, אלון, בן, אביב, רועי, גיא, לירן, אשש
-        </span>
+        <Row>
+          {props.participants?.map((item, index) => (
+            <span
+              className="game_item_participants_text font_extra_small"
+              style={{ marginInline: "0.1rem" }}>
+              {item.nickname},
+            </span>
+          ))}
+        </Row>
         <IconButton
           icon={<FaChevronRight color="#000" size="1.2rem" />}
           onClick={props.onClick}
@@ -44,7 +53,7 @@ const GameItem: React.FC<GameItemProps> = (props) => {
       <Row>
         <span className="game_item_status font_tiny">סטאטוס - </span>
         <div
-          className={`game_item_status_circle_${props.started}`}
+          className={`game_item_status_circle_${props.gameStarted}`}
           style={{ marginInline: "0.8rem" }}></div>
       </Row>
     </div>

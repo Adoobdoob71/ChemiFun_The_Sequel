@@ -3,7 +3,7 @@ import "./IconButton.css";
 
 interface IconButtonProps {
   icon: JSX.Element;
-  onClick: () => void;
+  onClick?: () => void;
   style?: React.CSSProperties;
 }
 

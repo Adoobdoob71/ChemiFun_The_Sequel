@@ -2,9 +2,9 @@ import React from "react";
 import "./Participant.css";
 
 interface ParticipantProps {
-  nickname: string;
-  leader: boolean;
-  points: number;
+  nickname?: string;
+  leader?: boolean;
+  points?: number;
   style?: React.CSSProperties;
 }
 

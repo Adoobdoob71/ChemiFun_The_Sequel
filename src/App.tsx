@@ -34,10 +34,10 @@ const App: React.FC = (props) => {
           <Route path="/home">
             <HomePage />
           </Route>
-          <Route path="/game">
+          <Route path="/game/:gameID">
             <LobbyPage />
           </Route>
-          <Route path="/game_control">
+          <Route path="/game_control/:gameID">
             <ControlPage />
           </Route>
         </Switch>

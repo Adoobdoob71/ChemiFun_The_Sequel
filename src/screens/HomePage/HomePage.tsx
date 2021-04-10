@@ -1,11 +1,20 @@
 import React from "react";
 import { FaChevronLeft } from "react-icons/fa";
-import { Column, GameItem, Header, IconButton, Modal } from "../../components";
+import {
+  Column,
+  GameItem,
+  Header,
+  IconButton,
+  Modal,
+  Row,
+} from "../../components";
 import { Game } from "../../utils/classes";
 import "./HomePage.css";
 import { useHistory } from "react-router-dom";
-import { MdAdd } from "react-icons/md";
+import { MdAdd, MdRefresh } from "react-icons/md";
 import CreateGamePage from "../CreateGamePage/CreateGamePage";
+import firebase from "firebase";
+import { NicknameContext } from "../../utils/NicknameContext";
 
 const HomePage: React.FC = (props) => {
   const [games, setGames] = React.useState<Game[]>([]);
@@ -13,10 +22,50 @@ const HomePage: React.FC = (props) => {
 
   const history = useHistory();
   const goBack = () => history.goBack();
-  const navigateToGame = () => history.push("/game");
+
+  const { nickname } = React.useContext(NicknameContext);
+
+  const navigateToGame = async (key: string) => {
+    await firebase
+      .database()
+      .ref("games")
+      .child(key)
+      .child("participants")
+      .push()
+      .set({
+        nickname: nickname,
+        points: 0,
+      });
+    history.push(`/game/${key}`);
+  };
 
   const showModal = () => setModalVisible(true);
   const hideModal = () => setModalVisible(false);
+
+  const loadGames = async () => {
+    setGames([]);
+    firebase
+      .database()
+      .ref("games")
+      .once("value", (snapshot) => {
+        snapshot.forEach((item) => {
+          setGames((gamesValue) => [
+            ...gamesValue,
+            {
+              ...item.val(),
+              key: item.key,
+              participants: item.val().participants
+                ? Object.values(item.val().participants)
+                : [],
+            } as Game,
+          ]);
+        });
+      });
+  };
+
+  React.useEffect(() => {
+    loadGames();
+  }, []);
 
   return (
     <>
@@ -31,10 +80,17 @@ const HomePage: React.FC = (props) => {
             />
           }
           right={
-            <IconButton
-              icon={<MdAdd color="var(--text-color)" size="1.6rem" />}
-              onClick={showModal}
-            />
+            <Row>
+              <IconButton
+                icon={<MdRefresh color="var(--text-color)" size="1.6rem" />}
+                onClick={loadGames}
+                style={{ marginInline: "1rem" }}
+              />
+              <IconButton
+                icon={<MdAdd color="var(--text-color)" size="1.6rem" />}
+                onClick={showModal}
+              />
+            </Row>
           }
         />
         <Column
@@ -43,22 +99,13 @@ const HomePage: React.FC = (props) => {
             alignItems: "center",
             paddingInline: "1.2rem",
           }}>
-          <GameItem
-            key="key"
-            title="כיתה יב'1"
-            style={{ marginBlock: "1rem" }}
-            started={true}
-            host="אלעד"
-            onClick={navigateToGame}
-          />
-          <GameItem
-            key="key"
-            title="כיתה יב'1"
-            style={{ marginBlock: "1rem" }}
-            started={false}
-            host="אלעד"
-            onClick={navigateToGame}
-          />
+          {games.map((item, index) => (
+            <GameItem
+              {...item}
+              onClick={() => navigateToGame(item.key)}
+              style={{ marginBlock: "1.2rem" }}
+            />
+          ))}
         </Column>
       </div>
       <Modal visible={modalVisible} onHide={hideModal}>

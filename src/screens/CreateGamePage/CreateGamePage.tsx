@@ -3,6 +3,9 @@ import { useHistory } from "react-router";
 import { Alert, Column, Header, IconButton, Modal } from "../../components";
 import "./CreateGamePage.css";
 import { MdAdd, MdClose } from "react-icons/md";
+import "firebase/database";
+import firebase from "firebase";
+import { NicknameContext } from "../../utils/NicknameContext";
 
 interface CreateGamePageProps {
   onHide: () => void;
@@ -12,9 +15,11 @@ const CreateGamePage: React.FC<CreateGamePageProps> = (props) => {
   const [gameName, setGameName] = React.useState<string>("");
   const [alertMessage, setAlertMessage] = React.useState<string | null>("");
 
+  const { nickname } = React.useContext(NicknameContext);
+
   const history = useHistory();
 
-  const navigateToGameCreated = () => {
+  const navigateToGameCreated = async () => {
     if (gameName.length === 0) {
       setAlertMessage("שם לא הוזן");
       setTimeout(() => {
@@ -22,7 +27,16 @@ const CreateGamePage: React.FC<CreateGamePageProps> = (props) => {
       }, 3000);
       return;
     }
-    history.push("/game_control");
+    let ref = firebase.database().ref("games");
+    let gameKey = (await ref.push()).key;
+    if (gameKey) {
+      await ref.child(gameKey).set({
+        gameStarted: true,
+        name: gameName,
+        host: nickname,
+      });
+      history.push(`/game_control/${gameKey}`);
+    }
   };
 
   const onGameNameChange = (event: React.ChangeEvent<HTMLInputElement>) =>
