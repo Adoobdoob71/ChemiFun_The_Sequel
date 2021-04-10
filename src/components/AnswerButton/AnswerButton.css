@@ -1,0 +1,14 @@
+.answer_button_main_view {
+  border: 0.2rem solid var(--primary-color);
+  padding-inline: 1.2rem;
+  padding-block: 1rem;
+  width: fit-content;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  background-color: var(--surface-color);
+  user-select: none;
+}
+
+.answer_button_text {
+  color: var(--text-color);
+}
