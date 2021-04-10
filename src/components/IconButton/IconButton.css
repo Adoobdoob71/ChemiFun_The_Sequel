@@ -10,3 +10,7 @@
 .icon_button_main_view:active {
   opacity: 0.4;
 }
+
+.icon_button_mode_disabled {
+  opacity: 0.4;
+}

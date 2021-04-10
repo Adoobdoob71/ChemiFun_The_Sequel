@@ -1,2 +1,33 @@
 .question_page_main_view {
 }
+
+.question_page_seconds {
+  color: var(--text-color);
+  font-weight: bold;
+  padding: 0.8rem;
+  border: 0.1rem solid var(--primary-color);
+  border-radius: 0.8rem;
+  background-color: var(--on-surface-background-color);
+}
+
+.qusetion_page_question {
+  color: var(--text-color);
+  font-weight: bold;
+  margin-block: 1.2rem;
+  max-width: 100%;
+}
+
+.question_page_image {
+  max-width: 100%;
+  border-radius: 0.8rem;
+}
+
+@media screen and (min-width: 55rem) {
+  .question_page_image {
+    max-width: 55rem;
+    max-height: 30rem;
+  }
+  .qusetion_page_question {
+    width: 55rem;
+  }
+}

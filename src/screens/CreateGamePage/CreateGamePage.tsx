@@ -31,7 +31,7 @@ const CreateGamePage: React.FC<CreateGamePageProps> = (props) => {
     let gameKey = (await ref.push()).key;
     if (gameKey) {
       await ref.child(gameKey).set({
-        gameStarted: true,
+        gameStarted: false,
         name: gameName,
         host: nickname,
       });
