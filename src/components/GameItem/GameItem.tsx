@@ -46,7 +46,7 @@ const GameItem: React.FC<GameItemProps> = (props) => {
           ))}
         </Row>
         <IconButton
-          icon={<FaChevronRight color="#000" size="1.2rem" />}
+          icon={<FaChevronRight color="var(--text-color)" size="1.2rem" />}
           onClick={props.onClick}
         />
       </Row>

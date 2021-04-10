@@ -20,6 +20,40 @@
   --on-surface-background-color: #f1f1f1;
 }
 
+.default_mode {
+  --primary-color: #48bf84;
+  --accent-color: #7fefbd;
+  --background-color: #e0e0e0;
+  --text-color: #000000;
+  --surface-color: #ffffff;
+  --backdrop-color: #00000088;
+  --on-primary-text-color: #000000;
+  --on-backdrop-text-color: #ffffff;
+  --placeholder-color: #757575;
+  --success-color: #85ff85;
+  --error-color: #fa5555;
+  --warning-color: #fffc91;
+  --link-color: #2a6fb5;
+  --on-surface-background-color: #f1f1f1;
+}
+
+.dark_mode {
+  --primary-color: #48bf84;
+  --accent-color: #7fefbd;
+  --background-color: #1f1f1f;
+  --text-color: #ffffff;
+  --surface-color: #353535;
+  --backdrop-color: #00000088;
+  --on-primary-text-color: #ffffff;
+  --on-backdrop-text-color: #ffffff;
+  --placeholder-color: #757575;
+  --success-color: #85ff85;
+  --error-color: #fa5555;
+  --warning-color: #fffc91;
+  --link-color: #2a6fb5;
+  --on-surface-background-color: #3f3f3f;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -99,4 +133,6 @@ body {
   padding-block: 1rem;
   border-top-right-radius: 0.6rem;
   border-top-left-radius: 0.6rem;
+  background-color: var(--surface-color);
+  color: var(--text-color);
 }

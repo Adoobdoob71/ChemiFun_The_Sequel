@@ -6,6 +6,15 @@
   width: 100%;
 }
 
+.header_title {
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+.header_subtitle {
+  color: var(--text-color);
+}
+
 @media screen and (min-width: 55rem) {
   .header_main_view {
     width: 55rem;
