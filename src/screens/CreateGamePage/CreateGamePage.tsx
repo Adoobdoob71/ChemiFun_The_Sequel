@@ -34,6 +34,7 @@ const CreateGamePage: React.FC<CreateGamePageProps> = (props) => {
         gameStarted: false,
         name: gameName,
         host: nickname,
+        timeCreated: firebase.firestore.Timestamp.now().toMillis(),
       });
       history.push(`/game_control/${gameKey}`);
     }
