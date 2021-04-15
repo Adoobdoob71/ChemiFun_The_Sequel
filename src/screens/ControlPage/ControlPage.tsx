@@ -9,6 +9,7 @@ import {
 import { useHistory, useParams } from "react-router";
 import { Column, Header, IconButton } from "../../components";
 import firebase from "firebase";
+import "./ControlPage.css";
 
 const ControlPage: React.FC = (props) => {
   const history = useHistory();
@@ -30,7 +31,7 @@ const ControlPage: React.FC = (props) => {
   };
 
   return (
-    <Column>
+    <Column style={{ height: window.innerHeight }}>
       <Header
         left={
           <IconButton
@@ -41,8 +42,9 @@ const ControlPage: React.FC = (props) => {
         title="חדר מנהל"
         subtitle="חדר המנהל של כיתה יב'1"
       />
-      <Column style={{ alignItems: "center" }}>
-        <Column style={{ alignItems: "center", marginBlock: "3.6rem" }}>
+      <Column
+        style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
+        <Column style={{ alignItems: "center" }}>
           <IconButton
             icon={<FaChevronRight color="var(--text-color)" size="3rem" />}
             onClick={navigateToLobbyPage}
@@ -50,7 +52,7 @@ const ControlPage: React.FC = (props) => {
           />
           <span className="control_page_caption font_small">ללכת ללובי</span>
         </Column>
-        <Column style={{ alignItems: "center", marginBlock: "3.6rem" }}>
+        <Column style={{ alignItems: "center", marginTop: "3.6rem" }}>
           <IconButton
             icon={<FaPlay color="var(--text-color)" size="3rem" />}
             onClick={startGame}
@@ -60,7 +62,7 @@ const ControlPage: React.FC = (props) => {
             להתחיל את המשחק
           </span>
         </Column>
-        <Column style={{ alignItems: "center", marginBlock: "3.6rem" }}>
+        <Column style={{ alignItems: "center", marginTop: "3.6rem" }}>
           <IconButton
             icon={<FaPause color="var(--text-color)" size="3rem" />}
             onClick={endGame}

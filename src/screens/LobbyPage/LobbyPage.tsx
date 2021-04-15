@@ -85,7 +85,10 @@ const LobbyPage: React.FC = (props) => {
       />
       <Column style={{ alignItems: "center", paddingInline: "1rem" }}>
         {loading ? (
-          <Spinner animation="border" color="var(--primary-color)" />
+          <Spinner
+            animation="border"
+            style={{ color: "var(--primary-color)" }}
+          />
         ) : (
           participants.map((item, index) => (
             <Participant

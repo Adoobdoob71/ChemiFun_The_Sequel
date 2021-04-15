@@ -4,6 +4,7 @@ export interface Game {
   host?: string;
   participants?: Participant[];
   key: string;
+  timeCreated: number;
 }
 
 export interface Participant {

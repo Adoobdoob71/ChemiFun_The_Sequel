@@ -8,6 +8,7 @@ export { default as AnswerButton } from "./AnswerButton/AnswerButton";
 export { default as Header } from "./Header/Header";
 export { default as Alert } from "./Alert/Alert";
 export { default as Modal } from "./Modal/Modal";
+export { default as Link } from "./Link/Link";
 
 export { default as GameItem } from "./GameItem/GameItem";
 export { default as Participant } from "./Participant/Participant";

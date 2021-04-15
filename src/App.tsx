@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import AboutPage from "./screens/AboutPage/AboutPage";
 import ControlPage from "./screens/ControlPage/ControlPage";
 import HomePage from "./screens/HomePage/HomePage";
 import LobbyPage from "./screens/LobbyPage/LobbyPage";
@@ -61,6 +62,9 @@ const App: React.FC = (props) => {
             </Route>
             <Route path="/game_questions/:gameID">
               <QuestionPage />
+            </Route>
+            <Route path="/about">
+              <AboutPage />
             </Route>
           </Switch>
         </BrowserRouter>

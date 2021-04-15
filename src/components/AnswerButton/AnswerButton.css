@@ -12,3 +12,7 @@
 .answer_button_text {
   color: var(--text-color);
 }
+
+.answer_button_main_view:active {
+  opacity: 0.4;
+}
