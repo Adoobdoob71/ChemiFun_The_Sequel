@@ -3,6 +3,7 @@ import { FaChevronRight } from "react-icons/fa";
 import { IconButton, Row } from "..";
 import { Participant } from "../../utils/classes";
 import "./GameItem.css";
+import firebase from "firebase";
 
 interface GameItemProps {
   name?: string;
@@ -12,9 +13,25 @@ interface GameItemProps {
   style?: React.CSSProperties;
   gameStarted?: boolean;
   onClick?: () => void;
+  timeCreated: number;
 }
 
 const GameItem: React.FC<GameItemProps> = (props) => {
+  const timestamp = (): string => {
+    let differenceInMins =
+      (firebase.firestore.Timestamp.now().toMillis() - props.timeCreated) /
+      60000;
+    let smallerThan60 = differenceInMins < 60;
+    let smallerThan1440 = differenceInMins < 1440;
+
+    if (smallerThan60) return "לפני " + differenceInMins.toFixed(0) + " דקות";
+
+    if (smallerThan1440)
+      return "לפני " + (differenceInMins / 60).toFixed(0) + " שעות";
+
+    return "לפני " + (differenceInMins / 1440).toFixed(0) + " ימים";
+  };
+
   return (
     <div
       style={props.style}
@@ -50,11 +67,19 @@ const GameItem: React.FC<GameItemProps> = (props) => {
           onClick={props.onClick}
         />
       </Row>
-      <Row>
-        <span className="game_item_status font_tiny">סטאטוס - </span>
-        <div
-          className={`game_item_status_circle_${props.gameStarted}`}
-          style={{ marginInline: "0.8rem" }}></div>
+      <Row
+        style={{
+          justifyContent: "space-between",
+          alignSelf: "stretch",
+          marginTop: "0.2rem",
+        }}>
+        <Row>
+          <span className="game_item_status font_tiny">סטאטוס - </span>
+          <div
+            className={`game_item_status_circle_${props.gameStarted}`}
+            style={{ marginInline: "0.8rem" }}></div>
+        </Row>
+        <span className="game_item_timestamp font_tiny">{timestamp()}</span>
       </Row>
     </div>
   );
