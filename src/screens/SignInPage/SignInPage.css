@@ -10,17 +10,27 @@
 }
 
 .sign_in_page_content_view {
-  flex: 1;
   width: 100%;
+  flex: 1;
   align-items: center;
   padding-top: 10rem;
-  /* background-image: url(https://i.pinimg.com/originals/27/48/ec/2748ecf463e8b449f71ce4dfd2dd9492.jpg);
-  background-repeat: no-repeat;
-  background-position: center; */
+  -webkit-backdrop-filter: blur(2rem);
+  backdrop-filter: blur(2rem);
+}
+
+.sign_in_page_background_image {
+  background-image: url(https://wallpaperaccess.com/full/912018.jpg);
+  width: 100%;
+  align-self: center;
+  flex: 1;
 }
 
 @media screen and (min-width: 55rem) {
   .sign_in_page_content_view {
+    width: 55rem;
+    align-self: center;
+  }
+  .sign_in_page_background_image {
     width: 55rem;
     align-self: center;
   }

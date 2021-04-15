@@ -1,6 +1,6 @@
 import React from "react";
-import { Alert, Column, Header, IconButton } from "../../components";
-import { FaChevronRight, FaPalette } from "react-icons/fa";
+import { Alert, Column, Header, IconButton, Row } from "../../components";
+import { FaChevronRight, FaInfo, FaPalette } from "react-icons/fa";
 import "./SignInPage.css";
 import { useHistory } from "react-router";
 import { NicknameContext } from "../../utils/NicknameContext";
@@ -25,12 +25,40 @@ const SignInPage: React.FC = ({}) => {
   const handleNickname = (event: React.ChangeEvent<HTMLInputElement>) =>
     setNickname(event.target.value);
 
+  const changeToLightTheme = () => {
+    document.documentElement.style.setProperty("--background-color", "#e0e0e0");
+    document.documentElement.style.setProperty("--text-color", "#000000");
+    document.documentElement.style.setProperty("--surface-color", "#FFFFFF");
+    document.documentElement.style.setProperty(
+      "--on-primary-text-color",
+      "#000000"
+    );
+    document.documentElement.style.setProperty(
+      "--on-surface-background-color",
+      "#f1f1f1"
+    );
+  };
+
+  const changeToDarkTheme = () => {
+    document.documentElement.style.setProperty("--background-color", "#1f1f1f");
+    document.documentElement.style.setProperty("--text-color", "#FFFFFF");
+    document.documentElement.style.setProperty("--surface-color", "#353535");
+    document.documentElement.style.setProperty(
+      "--on-primary-text-color",
+      "#ffffff"
+    );
+    document.documentElement.style.setProperty(
+      "--on-surface-background-color",
+      "#3f3f3f"
+    );
+  };
+
   const switchTheme = () => {
-    darkTheme
-      ? (document.getElementById("root")!.className = "default_theme")
-      : (document.getElementById("root")!.className = "dark_theme");
+    darkTheme ? changeToLightTheme() : changeToDarkTheme();
     setDarkTheme(!darkTheme);
   };
+
+  const goToAboutPage = () => history.push("/about");
   return (
     <>
       <Column
@@ -39,10 +67,17 @@ const SignInPage: React.FC = ({}) => {
         }}>
         <Header
           left={
-            <IconButton
-              icon={<FaPalette color="var(--text-color)" size="1.4rem" />}
-              onClick={switchTheme}
-            />
+            <Row>
+              <IconButton
+                icon={<FaInfo color="var(--text-color)" size="1.4rem" />}
+                onClick={goToAboutPage}
+                style={{ marginRight: "1rem" }}
+              />
+              <IconButton
+                icon={<FaPalette color="var(--text-color)" size="1.4rem" />}
+                onClick={switchTheme}
+              />
+            </Row>
           }
           right={
             <IconButton
@@ -53,14 +88,18 @@ const SignInPage: React.FC = ({}) => {
           title="ברוכים הבאים לכימיכיף"
           subtitle="לחצו על הכפתור מימין על מנת להמשיך"
         />
-        <div className="flex flex_direction_column sign_in_page_content_view">
-          <span className="sign_in_page_nickname font_large">:בחרו כינוי</span>
-          <input
-            value={nickname}
-            onChange={handleNickname}
-            placeholder="כינוי"
-            className="custom_input font_medium"
-          />
+        <div className="flex flex_direction_column sign_in_page_background_image">
+          <div className="flex flex_direction_column sign_in_page_content_view">
+            <span className="sign_in_page_nickname font_large">
+              :בחרו כינוי
+            </span>
+            <input
+              value={nickname}
+              onChange={handleNickname}
+              placeholder="כינוי"
+              className="custom_input font_medium"
+            />
+          </div>
         </div>
       </Column>
       <Alert text={alertMessage} />
