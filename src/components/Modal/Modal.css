@@ -2,4 +2,5 @@
   left: 50%;
   transform: translateX(-50%);
   border-radius: 0.8rem;
+  background-color: var(--surface-color);
 }
