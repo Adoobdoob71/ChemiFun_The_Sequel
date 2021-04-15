@@ -1,0 +1,7 @@
+.link_background {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  color: var(--link-color);
+  font-weight: bold;
+}
