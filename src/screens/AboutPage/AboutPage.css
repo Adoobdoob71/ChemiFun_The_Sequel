@@ -1,0 +1,15 @@
+.about_page_main_view {
+  padding-block: 6rem;
+}
+
+.about_page_profile_picture {
+  width: 16rem;
+  height: 16rem;
+  border-radius: 8rem;
+}
+
+.about_page_username {
+  color: var(--text-color);
+  font-weight: bold;
+  margin-top: 2rem;
+}
