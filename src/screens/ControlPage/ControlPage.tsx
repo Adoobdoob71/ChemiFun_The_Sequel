@@ -1,34 +1,34 @@
-import React from "react";
+import React from "react"
 import {
   FaChevronLeft,
   FaChevronRight,
   FaPause,
   FaPlay,
   FaStop,
-} from "react-icons/fa";
-import { useHistory, useParams } from "react-router";
-import { Column, Header, IconButton } from "../../components";
-import firebase from "firebase";
-import "./ControlPage.css";
+} from "react-icons/fa"
+import { useHistory, useParams } from "react-router"
+import { Column, Header, IconButton } from "../../components"
+import firebase from "firebase"
+import "./ControlPage.css"
 
 const ControlPage: React.FC = (props) => {
-  const history = useHistory();
-  const goBack = () => history.goBack();
+  const history = useHistory()
+  const goBack = () => history.goBack()
 
-  const { gameID } = useParams<{ gameID: string }>();
+  const { gameID } = useParams<{ gameID: string }>()
 
-  const navigateToLobbyPage = () => history.push(`/game/:${gameID}`);
+  const navigateToLobbyPage = () => history.push(`/game/${gameID}`)
 
   const startGame = async () => {
     await firebase.database().ref("games").child(gameID).update({
       gameStarted: true,
-    });
-  };
+    })
+  }
   const endGame = async () => {
     await firebase.database().ref("games").child(gameID).update({
       gameStarted: false,
-    });
-  };
+    })
+  }
 
   return (
     <Column style={{ height: window.innerHeight }}>
@@ -40,7 +40,6 @@ const ControlPage: React.FC = (props) => {
           />
         }
         title="חדר מנהל"
-        subtitle="חדר המנהל של כיתה יב'1"
       />
       <Column
         style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
@@ -74,7 +73,7 @@ const ControlPage: React.FC = (props) => {
         </Column>
       </Column>
     </Column>
-  );
-};
+  )
+}
 
-export default ControlPage;
+export default ControlPage
